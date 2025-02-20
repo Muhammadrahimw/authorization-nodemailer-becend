@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "Muhammadrahim",
+        "email": "muqalla21@gmail.com",
+        "password": "12345",
+        "resetPassword": 0
+    },
+    {
+        "id": 2,
+        "name": "John",
+        "email": "john@gmail.com",
+        "password": "12345",
+        "resetPassword": 0
+    },
+    {
+        "id": 3,
+        "name": "Robiya",
+        "email": "robiya@gmail.com",
+        "password": "12345",
+        "resetPassword": 0
+    },
+    {
+        "id": 4,
+        "name": "Muhammadjon",
+        "email": "muhammadjon@gmail.com",
+        "password": "12345",
+        "resetPassword": 0
+    },
+    {
+        "id": 5,
+        "name": "Mixar",
+        "email": "mixar2005w@gmail.com",
+        "password": "12345",
+        "resetPassword": 0
+    }
+]
