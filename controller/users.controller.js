@@ -8,6 +8,42 @@ dotenv.config();
 
 totp.options = {step: 60};
 
+export const registerController = async (req, res, next) => {
+	try {
+		const {name, email, password} = req.body;
+		if (!name || !email || !password)
+			throw new CustomError(400, `Name, email and password must be`);
+		const users = read(`users`);
+		const checkUser = users.some((user) => user.email === email);
+		if (checkUser)
+			throw new CustomError(400, `This email has already been registered`);
+		write(`users`, [
+			...users,
+			{
+				id: users.length ? users.length + 1 : 1,
+				name: name,
+				email: email,
+				password: password,
+			},
+		]);
+		const token = signInJwt({id: users.length ? users.length + 1 : 1});
+		const resData = new ResData(200, `success`, [
+			{
+				id: users.length ? users.length + 1 : 1,
+				name: name,
+				email: email,
+				password: password,
+			},
+			{
+				token: token,
+			},
+		]);
+		res.status(resData.status).json(resData);
+	} catch (error) {
+		next(error);
+	}
+};
+
 export const loginController = async (req, res, next) => {
 	try {
 		const {email, password} = req.body;
@@ -36,7 +72,7 @@ export const resetPassword = async (req, res, next) => {
 		const {email} = req.body;
 		if (!email) throw new CustomError(400, `Your email not defined`);
 		const findUser = read(`users`).find((user) => user.email === email);
-		// Aynan secret o'zgaruvchisiga olish majburiy
+		// Aynan o'zgaruvchiga o'zgaruvchisiga olish majburiy
 		const secret = process.env.SECRET_KEY + findUser.email;
 		const otpCode = totp.generate(secret);
 		await transport.sendMail({
@@ -117,7 +153,7 @@ export const resetPassword = async (req, res, next) => {
 export const changePassword = (req, res, next) => {
 	try {
 		const {code, email, newPassword} = req.body;
-		// Aynan secret o'zgaruvchisiga olish majburiy
+		// Aynan o'zgaruvchiga o'zgaruvchisiga olish majburiy
 		const secret = process.env.SECRET_KEY + email;
 		const isValid = totp.check(code, secret, {window: 1});
 		if (!isValid) throw new CustomError(400, `Incorrect code`);

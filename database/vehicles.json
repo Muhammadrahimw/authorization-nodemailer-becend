@@ -1,0 +1,130 @@
+[
+	{
+		"id": 1,
+		"type": "Car",
+		"brand": "Toyota",
+		"model": "Camry",
+		"year": 2022,
+		"color": "White"
+	},
+	{
+		"id": 2,
+		"type": "Motorcycle",
+		"brand": "Honda",
+		"model": "CBR600RR",
+		"year": 2021,
+		"engineCapacity": "599cc"
+	},
+	{
+		"id": 3,
+		"type": "Truck",
+		"brand": "Ford",
+		"model": "F-150",
+		"year": 2023,
+		"loadCapacity": "1000kg"
+	},
+	{
+		"id": 4,
+		"type": "Bicycle",
+		"brand": "Giant",
+		"model": "Talon 2",
+		"year": 2020,
+		"frameMaterial": "Aluminum"
+	},
+	{
+		"id": 5,
+		"type": "Bus",
+		"brand": "Mercedes-Benz",
+		"model": "Sprinter",
+		"year": 2023,
+		"seatingCapacity": 20
+	},
+	{
+		"id": 6,
+		"type": "Electric Car",
+		"brand": "Tesla",
+		"model": "Model S",
+		"year": 2024,
+		"batteryRange": "405 miles"
+	},
+	{
+		"id": 7,
+		"type": "SUV",
+		"brand": "Jeep",
+		"model": "Wrangler",
+		"year": 2022,
+		"color": "Black"
+	},
+	{
+		"id": 8,
+		"type": "Van",
+		"brand": "Volkswagen",
+		"model": "Transporter",
+		"year": 2023,
+		"cargoVolume": "6.7 m³"
+	},
+	{
+		"id": 9,
+		"type": "Convertible",
+		"brand": "BMW",
+		"model": "Z4",
+		"year": 2021,
+		"roofType": "Soft-top"
+	},
+	{
+		"id": 10,
+		"type": "Pickup",
+		"brand": "Chevrolet",
+		"model": "Silverado",
+		"year": 2023,
+		"towingCapacity": "13,300 lbs"
+	},
+	{
+		"id": 11,
+		"type": "Scooter",
+		"brand": "Vespa",
+		"model": "Primavera",
+		"year": 2022,
+		"engineCapacity": "150cc"
+	},
+	{
+		"id": 12,
+		"type": "Minivan",
+		"brand": "Chrysler",
+		"model": "Pacifica",
+		"year": 2023,
+		"seatingCapacity": 7
+	},
+	{
+		"id": 13,
+		"type": "Coupe",
+		"brand": "Audi",
+		"model": "A5",
+		"year": 2021,
+		"color": "Red"
+	},
+	{
+		"id": 14,
+		"type": "Electric Motorcycle",
+		"brand": "Zero Motorcycles",
+		"model": "SR/F",
+		"year": 2024,
+		"batteryRange": "171 miles"
+	},
+	{
+		"id": 15,
+		"type": "Off-Road Vehicle",
+		"brand": "Land Rover",
+		"model": "Defender",
+		"year": 2023,
+		"terrainCapability": "All-Terrain"
+	},
+	{
+		"id": 16,
+		"type": "Hybrid Car",
+		"brand": "Hyundai",
+		"model": "Ioniq",
+		"year": 2023,
+		"fuelEfficiency": "58 MPG"
+	}
+]
