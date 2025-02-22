@@ -12,11 +12,11 @@ export const registerController = async (req, res, next) => {
 	try {
 		const {name, email, password} = req.body;
 		if (!name || !email || !password)
-			throw new CustomError(400, `Name, email and password must be`);
+			throw new CustomError(200, `Name, email and password must be`);
 		const users = read(`users`);
 		const checkUser = users.some((user) => user.email === email);
 		if (checkUser)
-			throw new CustomError(400, `This email has already been registered`);
+			throw new CustomError(200, `This email has already been registered`);
 		write(`users`, [
 			...users,
 			{
@@ -48,11 +48,11 @@ export const loginController = async (req, res, next) => {
 	try {
 		const {email, password} = req.body;
 		if (!email || !password)
-			throw new CustomError(400, `Email or password must be`);
+			throw new CustomError(200, `Email or password must be`);
 		const findUser = read(`users`).find(
 			(user) => user.email === email && user.password === password
 		);
-		if (!findUser) throw new CustomError(400, `Email or password wrong`);
+		if (!findUser) throw new CustomError(200, `Email or password wrong`);
 		const token = signInJwt({id: findUser.id});
 		const resData = new ResData(200, `success`, [{...findUser, token}]);
 		await transport.sendMail({
@@ -70,7 +70,7 @@ export const loginController = async (req, res, next) => {
 export const resetPassword = async (req, res, next) => {
 	try {
 		const {email} = req.body;
-		if (!email) throw new CustomError(400, `Your email not defined`);
+		if (!email) throw new CustomError(200, `Your email not defined`);
 		const findUser = read(`users`).find((user) => user.email === email);
 		// Aynan o'zgaruvchiga o'zgaruvchisiga olish majburiy
 		const secret = process.env.SECRET_KEY + findUser.email;
@@ -156,7 +156,7 @@ export const changePassword = (req, res, next) => {
 		// Aynan o'zgaruvchiga o'zgaruvchisiga olish majburiy
 		const secret = process.env.SECRET_KEY + email;
 		const isValid = totp.check(code, secret, {window: 1});
-		if (!isValid) throw new CustomError(400, `Incorrect code`);
+		if (!isValid) throw new CustomError(200, `Incorrect code`);
 		const users = read(`users`).map((user) =>
 			user.email === email ? {...user, password: newPassword} : user
 		);

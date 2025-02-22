@@ -16,7 +16,7 @@ export const getById = (req, res, next) => {
 		const {id} = req.params;
 		const products = read(`vehicles`);
 		const findProduct = products.find((product) => product.id == id);
-		if (!findProduct) throw new CustomError(400, `Product not found`);
+		if (!findProduct) throw new CustomError(200, `Product not found`);
 		const resData = new ResData(200, `success`, findProduct);
 		res.status(resData.status).json(resData);
 	} catch (error) {
@@ -28,7 +28,7 @@ export const post = (req, res, next) => {
 	try {
 		const {type, brand, model, year} = req.body;
 		if (!type || !brand || !model || !year)
-			throw new CustomError(400, `type, brand, model, and year are must be`);
+			throw new CustomError(200, `type, brand, model, and year are must be`);
 		let products = read(`vehicles`);
 		products.push({
 			id: products.length ? products.length + 1 : 1,
@@ -55,10 +55,10 @@ export const put = (req, res, next) => {
 		const {id} = req.params;
 		const {type, brand, model, year} = req.body;
 		if (!type || !brand || !model || !year)
-			throw new CustomError(400, `type, brand, model, and year are must be`);
+			throw new CustomError(200, `type, brand, model, and year are must be`);
 		let products = read(`vehicles`);
 		const checkProduct = products.find((product) => product.id == id);
-		if (!checkProduct) throw new CustomError(400, `Product not found`);
+		if (!checkProduct) throw new CustomError(200, `Product not found`);
 		products = products.map((product) =>
 			product.id == id
 				? {
@@ -88,7 +88,7 @@ export const deleteById = (req, res, next) => {
 		const {id} = req.params;
 		let products = read(`vehicles`);
 		const checkProduct = products.find((product) => product.id == id);
-		if (!checkProduct) throw new CustomError(400, `Product not found`);
+		if (!checkProduct) throw new CustomError(200, `Product not found`);
 		products = products.filter((product) => product.id != id);
 		write(`vehicles`, products);
 		const resData = new ResData(200, `successfully deleted`);
